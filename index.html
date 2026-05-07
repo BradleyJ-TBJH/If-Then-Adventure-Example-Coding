@@ -155,7 +155,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>🐉 Dragon's Rescue 🐉</h1>
+        <h1>Dragon's Rescue</h1>
         <div id="gameContent"></div>
     </div>
 
@@ -178,9 +178,9 @@
                 image: "images/Start.png",
                 text: "Your beloved sister has been kidnapped by the Purple Dragon and taken to her cave deep in the Enchanted Forest. You stand at the edge of the forest, ready to rescue her. The forest path splits into three directions.",
                 choices: [
-                    { text: "🌲 Take the LEFT path through the dense trees", next: 'leftForest' },
-                    { text: "🌲 Take the MIDDLE path along the crystal river", next: 'riverPath' },
-                    { text: "🌲 Take the RIGHT path through the misty mountains", next: 'mountainPath' }
+                    { text: "Take the left path through the dense trees", next: 'leftForest' },
+                    { text: "Take the middle path along the crystal river", next: 'riverPath' },
+                    { text: "Take the right path through the misty mountains", next: 'mountainPath' }
                 ]
             },
 
@@ -189,8 +189,8 @@
                 image: "images/leftForest.png",
                 text: "As you venture deeper into the dense forest, you spot a glowing Fairy sitting on a mushroom. She looks distressed. 'Please help me!' she cries. 'A shadow creature has stolen my magic wand, and I can't help the forest anymore.'",
                 choices: [
-                    { text: "✨ Help the Fairy find her wand", next: 'helpFairy', item: 'Fairy\'s Wand' },
-                    { text: "⏭️ Politely decline and continue your journey", next: 'afterLeftForest' }
+                    { text: "Help the Fairy find her wand", next: 'helpFairy', item: 'Fairy\'s Wand' },
+                    { text: "Politely decline and continue your journey", next: 'afterLeftForest' }
                 ]
             },
 
@@ -237,8 +237,8 @@
                 image: "images/riverPath.png",
                 text: "You follow the crystal river and encounter a sad Water Sprite sitting by the shore. 'My river is drying up because someone blocked the source upstream. Will you help me restore it?'",
                 choices: [
-                    { text: "🌊 Help the Water Sprite", next: 'helpSprite', item: 'Water Crystal' },
-                    { text: "⏭️ Continue on your way", next: 'afterRiverPath' }
+                    { text: "Help the Water Sprite", next: 'helpSprite', item: 'Water Crystal' },
+                    { text: "Continue on your way", next: 'afterRiverPath' }
                 ]
             },
 
@@ -461,11 +461,12 @@
             // Display choices
             html += '<div class="choices">';
             scene.choices.forEach((choice, index) => {
+                const choiceLabel = `✨ ${choice.text}`;
                 // Check if choice requires an item
                 if (choice.requiresItem && gameState.itemsCollected.length === 0) {
-                    html += `<button disabled style="opacity: 0.5; cursor: not-allowed;">${choice.text} (Need an item)</button>`;
+                    html += `<button disabled style="opacity: 0.5; cursor: not-allowed;">${choiceLabel} (Need an item)</button>`;
                 } else {
-                    html += `<button onclick="makeChoice('${choice.next}', ${choice.item ? `'${choice.item}'` : 'null'})">${choice.text}</button>`;
+                    html += `<button onclick="makeChoice('${choice.next}', ${choice.item ? `'${choice.item}'` : 'null'})">${choiceLabel}</button>`;
                 }
             });
             html += '</div>';
