@@ -466,7 +466,8 @@
                 if (choice.requiresItem && gameState.itemsCollected.length === 0) {
                     html += `<button disabled style="opacity: 0.5; cursor: not-allowed;">${choiceLabel} (Need an item)</button>`;
                 } else {
-                    html += `<button onclick="makeChoice('${choice.next}', ${choice.item ? `'${choice.item}'` : 'null'})">${choiceLabel}</button>`;
+                    const itemArg = choice.item ? JSON.stringify(choice.item) : 'null';
+                    html += `<button onclick="makeChoice('${choice.next}', ${itemArg})">${choiceLabel}</button>`;
                 }
             });
             html += '</div>';
