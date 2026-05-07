@@ -467,7 +467,7 @@
                     html += `<button disabled style="opacity: 0.5; cursor: not-allowed;">${choiceLabel} (Need an item)</button>`;
                 } else {
                     const itemArg = choice.item ? JSON.stringify(choice.item) : 'null';
-                    html += `<button onclick="makeChoice('${choice.next}', ${itemArg})">${choiceLabel}</button>`;
+                    html += `<button onclick='makeChoice("${choice.next}", ${itemArg})'>${choiceLabel}</button>`;
                 }
             });
             html += '</div>';
